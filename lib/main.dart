@@ -101,6 +101,50 @@ class SignUp extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red[700],
       ),
+      floatingActionButton: Center(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              FlatButton(
+                child: Text(
+                  'User',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ) ,
+                ),
+                color: Colors.red[700],
+                onPressed: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignIn())
+                  );
+                },
+              ),
+
+              FlatButton(
+                child: Text(
+                  'Store',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    color: Colors.white,
+
+                  ) ,
+                ),
+                color: Colors.red[700],
+                onPressed: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUp())
+                  );
+                },
+              ),
+            ]
+        ),
+      ),
     );
   }
 }
