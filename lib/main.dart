@@ -162,3 +162,69 @@ class SignUp extends StatelessWidget {
     );
   }
 }
+
+class SignedInShopper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class exampleStore extends StatefulWidget {
+  @override
+  _exampleStoreState createState() => _exampleStoreState();
+}
+
+class _exampleStoreState extends State<exampleStore> {
+
+
+  Product water = new Product("water", 1.00);
+  List<Product> productList = new List(5);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "safeway",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.red[700],
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //user input
+          setState(() {
+            Product newp = new Product("whatever the user inputs", 30.0)
+            productList.add(newp);
+          });
+        },
+        child: Text(
+          "add product"
+        ),
+      ),
+      body: Text(
+        "$productList"
+      ),
+    );
+  }
+}
+
+class Product {
+  String name;
+  double price;
+
+  Product(String name, double price){
+    this.name = name;
+    this.price = price;
+  }
+
+}
+
+
+
