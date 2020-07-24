@@ -200,7 +200,7 @@ class _exampleStoreState extends State<exampleStore> {
         onPressed: () {
           //user input
           setState(() {
-            Product newp = new Product("whatever the user inputs", 30.0)
+            Product newp = new Product("whatever the user inputs", 30.0);
             productList.add(newp);
           });
         },
