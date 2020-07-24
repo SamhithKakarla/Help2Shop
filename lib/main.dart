@@ -25,13 +25,16 @@ class Home extends StatelessWidget {
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              RaisedButton(
+              FlatButton(
                 child: Text(
                   'Sign In',
                   style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 20.0,
+                    color: Colors.white,
                   ) ,
                 ),
+                color: Colors.red[700],
                 onPressed: (){
                   Navigator.push(
                       context,
@@ -40,13 +43,17 @@ class Home extends StatelessWidget {
                 },
               ),
 
-              RaisedButton(
+              FlatButton(
                 child: Text(
                   'Sign Up',
                   style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 20.0,
+                    color: Colors.white,
+
                   ) ,
                 ),
+                color: Colors.red[700],
                 onPressed: (){
                   Navigator.push(
                       context,
@@ -74,7 +81,7 @@ class SignIn extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Colors.red[700],
       ),
     );
   }
@@ -92,7 +99,7 @@ class SignUp extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.green[700],
+        backgroundColor: Colors.red[700],
       ),
     );
   }
