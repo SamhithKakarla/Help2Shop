@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-    home: Home()
-
-));
+void main() => runApp(MaterialApp(home: Home()));
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Help2Shop",
+        title: Text(
+          "Help2Shop",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-
           ),
         ),
         centerTitle: true,
         backgroundColor: Colors.red[700],
       ),
-
       floatingActionButton: Center(
         child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               FlatButton(
                 child: Text(
@@ -32,17 +28,14 @@ class Home extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
                     color: Colors.white,
-                  ) ,
+                  ),
                 ),
                 color: Colors.red[700],
-                onPressed: (){
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignIn())
-                  );
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignIn()));
                 },
               ),
-
               FlatButton(
                 child: Text(
                   'Sign Up',
@@ -50,71 +43,48 @@ class Home extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
                     color: Colors.white,
-
-                  ) ,
+                  ),
                 ),
                 color: Colors.red[700],
-                onPressed: (){
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUp())
-                  );
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUp()));
                 },
               ),
-            ]
-        ),
+            ]),
       ),
     );
   }
 }
-
 
 class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign In",
+        title: Text(
+          "Sign In",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-
           ),
         ),
         centerTitle: true,
         backgroundColor: Colors.red[700],
       ),
-    );
-  }
-}
-
-class SignUp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Sign Up",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              '\n\nPlease Select What Type of User You Are',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
-        centerTitle: true,
-        backgroundColor: Colors.red[700],
       ),
-
-     body: Center(
-               child: Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children: <Widget>[
-                   Text('\n\nPlease Select What Type of User You Are',
-                     style: TextStyle(
-                         fontSize: 20,
-                         fontWeight: FontWeight.bold,
-                     ),
-                   ),
-                 ],
-               ),
-             ),
       floatingActionButton: Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -127,17 +97,14 @@ class SignUp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
                     color: Colors.white,
-                  ) ,
+                  ),
                 ),
                 color: Colors.red[700],
-                onPressed: (){
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignIn())
-                  );
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignedInShopper()));
                 },
               ),
-
               FlatButton(
                 child: Text(
                   'Store',
@@ -145,19 +112,15 @@ class SignUp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
                     color: Colors.white,
-
-                  ) ,
+                  ),
                 ),
                 color: Colors.red[700],
-                onPressed: (){
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUp())
-                  );
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignedInStore()));
                 },
               ),
-            ]
-        ),
+            ]),
       ),
     );
   }
@@ -170,61 +133,81 @@ class SignedInShopper extends StatelessWidget {
   }
 }
 
-class exampleStore extends StatefulWidget {
+class SignedInStore extends StatelessWidget {
   @override
-  _exampleStoreState createState() => _exampleStoreState();
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }
 
-class _exampleStoreState extends State<exampleStore> {
 
-
-  Product water = new Product("water", 1.00);
-  List<Product> productList = new List(5);
-
+class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "safeway",
+          "Sign Up",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-
           ),
         ),
         centerTitle: true,
         backgroundColor: Colors.red[700],
       ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //user input
-          setState(() {
-            Product newp = new Product("whatever the user inputs", 30.0);
-            productList.add(newp);
-          });
-        },
-        child: Text(
-          "add product"
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              '\n\nPlease Select What Type of User You Are',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
-      body: Text(
-        "$productList"
+      floatingActionButton: Center(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              FlatButton(
+                child: Text(
+                  'Shopper',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+                color: Colors.red[700],
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignIn()));
+                },
+              ),
+              FlatButton(
+                child: Text(
+                  'Store',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+                color: Colors.red[700],
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUp()));
+                },
+              ),
+            ]),
       ),
     );
   }
 }
-
-class Product {
-  String name;
-  double price;
-
-  Product(String name, double price){
-    this.name = name;
-    this.price = price;
-  }
-
-}
-
 
 
