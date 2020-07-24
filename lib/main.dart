@@ -101,6 +101,16 @@ class SignUp extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red[700],
       ),
+
+      body: Text(
+        "Please choose your user type",
+        style: TextStyle(
+          backgroundColor: Colors.red,
+          fontSize: 20.0,
+          fontWeight: FontWeight.w100
+        ),
+
+      ),
       floatingActionButton: Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
