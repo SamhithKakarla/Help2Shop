@@ -102,15 +102,19 @@ class SignUp extends StatelessWidget {
         backgroundColor: Colors.red[700],
       ),
 
-      body: Text(
-        "Please choose your user type",
-        style: TextStyle(
-          backgroundColor: Colors.red,
-          fontSize: 20.0,
-          fontWeight: FontWeight.w100
-        ),
-
-      ),
+     body: Center(
+               child: Row(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 children: <Widget>[
+                   Text('\n\nPlease Select What Type of User You Are',
+                     style: TextStyle(
+                         fontSize: 20,
+                         fontWeight: FontWeight.bold,
+                     ),
+                   ),
+                 ],
+               ),
+             ),
       floatingActionButton: Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +122,7 @@ class SignUp extends StatelessWidget {
             children: [
               FlatButton(
                 child: Text(
-                  'User',
+                  'Shopper',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
