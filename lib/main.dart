@@ -103,7 +103,7 @@ class SignUp extends StatelessWidget {
       ),
 
      body: Center(
-               child: Row(
+               child: Column(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: <Widget>[
                    Text('\n\nPlease Select What Type of User You Are',
