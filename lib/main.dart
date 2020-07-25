@@ -33,22 +33,7 @@ class Home extends StatelessWidget {
                 color: Colors.red[700],
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignIn()));
-                },
-              ),
-              FlatButton(
-                child: Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
-                ),
-                color: Colors.red[700],
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUp()));
+                      MaterialPageRoute(builder: (context) => MyApp()));
                 },
               ),
             ]),
@@ -383,71 +368,96 @@ class SignedInStoreState extends State<SignedInStore> {
     );
   }
 }
-class SignUp extends StatelessWidget {
+
+class MyApp extends StatefulWidget {
+  @override
+  _State createState() => _State();
+}
+
+class _State extends State<MyApp> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Sign Up",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+        appBar: AppBar(
+          title: Text('Sign In'),
+          backgroundColor: Colors.red,
         ),
-        centerTitle: true,
-        backgroundColor: Colors.red[700],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '\n\nPlease Select What Type of User You Are',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              FlatButton(
-                child: Text(
-                  'Shopper',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    color: Colors.white,
+        body: Padding(
+            padding: EdgeInsets.all(10),
+            child: ListView(
+              children: <Widget>[
+                Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Help2Shop',
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 30),
+                    )),
+                Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Sign in',
+                      style: TextStyle(fontSize: 20),
+                    )),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: TextField(
+                    controller: nameController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'User Name',
+                    ),
                   ),
                 ),
-                color: Colors.red[700],
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignIn()));
-                },
-              ),
-              FlatButton(
-                child: Text(
-                  'Store',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    color: Colors.white,
+                Container(
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: TextField(
+                    obscureText: true,
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Password',
+                    ),
                   ),
                 ),
-                color: Colors.red[700],
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUp()));
-                },
-              ),
-            ]),
-      ),
-    );
+                Container(
+                    height: 70,
+                    padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+                    child: RaisedButton(
+                      textColor: Colors.white,
+                      color: Colors.red,
+                      child: Text('Login'),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignIn()));
+                      },
+                    )),
+                Container(
+                    child: Row(
+                      children: <Widget>[
+                        Text('Do not have an account?'),
+                        FlatButton(
+                          textColor: Colors.blue,
+                          child: Text(
+                            'Sign in',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          onPressed: () {
+                            //signup screen
+                          },
+                        )
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    ))
+              ],
+            )));
   }
 }
+
