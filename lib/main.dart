@@ -2,46 +2,6 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(home: Home()));
 
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Help2Shop",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.red[700],
-      ),
-      floatingActionButton: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              FlatButton(
-                child: Text(
-                  'Sign In',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
-                ),
-                color: Colors.red[700],
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyApp()));
-                },
-              ),
-            ]),
-      ),
-    );
-  }
-}
-
 class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -369,12 +329,12 @@ class SignedInStoreState extends State<SignedInStore> {
   }
 }
 
-class MyApp extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<MyApp> {
+class _State extends State<Home> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -446,7 +406,7 @@ class _State extends State<MyApp> {
                         FlatButton(
                           textColor: Colors.blue,
                           child: Text(
-                            'Sign in',
+                            'Sign Up',
                             style: TextStyle(fontSize: 20),
                           ),
                           onPressed: () {
