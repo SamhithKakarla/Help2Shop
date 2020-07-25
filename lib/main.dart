@@ -299,17 +299,16 @@ class SignedInStoreState extends State<SignedInStore> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       // Added
-      length: 3, // Added
+      length: 2, // Added
       initialIndex: 0, //Added
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(tabs: [
             Tab(text: "Available Catalog"),
-            Tab(text: "Favorite Stores"),
-            Tab(text: "Recent Helpers"),
+            Tab(text: "Shopping Information"),
           ]),
           title: Text(
-            "TestShopper",
+            "Safeway",
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -319,7 +318,6 @@ class SignedInStoreState extends State<SignedInStore> {
         ),
         body: TabBarView(
           children: [
-            RecentHelperScroll(),
             RecentHelperScroll(),
             RecentHelperScroll(),
           ],
