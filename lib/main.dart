@@ -341,7 +341,7 @@ class _State extends State<Home> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Sign In'),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.red[700],
         ),
         body: Padding(
             padding: EdgeInsets.all(10),
@@ -353,7 +353,7 @@ class _State extends State<Home> {
                     child: Text(
                       'Help2Shop',
                       style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.red[700],
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
