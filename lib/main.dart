@@ -252,7 +252,9 @@ class UserRow extends StatelessWidget {
               new Expanded(
                   child: _userValue(
                       value: user.numListsFilled,
-                      image: 'assets/img/ic_distance.png')),
+                      image: 'img/ic_distance.png'
+                  )
+              ),
             ],
           ),
         ],
@@ -284,7 +286,6 @@ class UserRow extends StatelessWidget {
         ));
   }
 }
-
 class User {
   final String name;
   final String address;
@@ -298,49 +299,49 @@ List<User> user = [
   const User(
     name: "Samhith Kakarla",
     address: "1234 DeAnza, Cupertino CA, 95014",
-    image: "assets/vgt.jpg",
+    image: 'img/mars.png',
     numListsFilled: "2",
   ),
   const User(
     name: "Sreegurunath Siva",
     address: "5678 DeAnza, Cupertino CA, 95014",
-    image: "assets/img/mars.png",
+    image: "img/mars.png",
     numListsFilled: "31",
   ),
   const User(
     name: "Sreeganesh Siva",
     address: "200 Park Avenue, New York NY, 10005",
-    image: "assets/img/mars.png",
+    image: "img/mars.png",
     numListsFilled: "17",
   ),
   const User(
     name: "Harry Potter",
     address: "4 Privet Drive, United Kingdom",
-    image: "assets/img/mars.png",
+    image: "img/mars.png",
     numListsFilled: "7",
   ),
   const User(
     name: "Hermione Granger",
     address: "Hampstead London",
-    image: "assets/img/mars.png",
+    image: "img/mars.png",
     numListsFilled: "134",
   ),
   const User(
     name: "Ron Weasley",
     address: "The Burrow",
-    image: "assets/img/mars.png",
+    image: "img/mars.png",
     numListsFilled: "532",
   ),
   const User(
     name: "Tom Marvolo Riddle",
     address: "The Graveyard",
-    image: "assets/img/mars.png",
+    image: "img/mars.png",
     numListsFilled: "164",
   ),
   const User(
     name: "Albus Percival Wulfric Brian Dumbledore",
     address: "Hogwarts",
-    image: "assets/img/mars.png",
+    image: "C:/Users/sreeg/AndroidStudioProjects/help2shop/img/mars.png",
     numListsFilled: "62442",
   ),
 ];
