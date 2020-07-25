@@ -133,13 +133,12 @@ class SignedInShopper extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       // Added
-      length: 4, // Added
+      length: 3, // Added
       initialIndex: 0, //Added
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(tabs: [
-            Tab(text: "My Profile"),
-            Tab(text: "Lists"),
+            Tab(text: "My Lists"),
             Tab(text: "Favorite Stores"),
             Tab(text: "Recent Helpers"),
           ]),
@@ -154,7 +153,6 @@ class SignedInShopper extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            RecentHelperScroll(),
             RecentHelperScroll(),
             RecentHelperScroll(),
             RecentHelperScroll(),
