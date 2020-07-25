@@ -329,7 +329,7 @@ class StoreRow extends StatelessWidget {
       margin: new EdgeInsets.symmetric(vertical: 16.0),
       alignment: FractionalOffset.centerLeft,
       child: new Image(
-        image: new AssetImage("img/mars.png"),
+        image: new AssetImage('img/neptune.png'),
         height: 92.0,
         width: 92.0,
       ),
@@ -415,9 +415,10 @@ class Store {
   final String name;
   final String location;
   final String distance;
+  final AssetImage image;
 
 
-  const Store({this.name, this.location, this.distance});
+  const Store({this.name, this.location, this.distance, this.image});
 }
 
 List<Store> stores = [
@@ -425,11 +426,14 @@ List<Store> stores = [
     name: "Safeway",
     location: "20620 W Homestead Rd, Cupertino, CA 95014",
     distance: "1.1 mile",
+      image: AssetImage('img/safeway.png')
+
   ),
   const Store(
     name: "Costco",
     location: "150 LAWRENCE STATION RD SUNNYVALE, CA 94086-5309",
     distance: "1.3 miles",
+    image: AssetImage('img/costco.png')
   ),
   const Store(
     name: "Target",
