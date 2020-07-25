@@ -350,37 +350,39 @@ class SignedInStore extends StatefulWidget {
 }
 
 class SignedInStoreState extends State<SignedInStore> {
-  static Product water = new Product("water", 1.00);
-  List<Product> productList = new List(100);
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Safeway",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+    return DefaultTabController(
+      // Added
+      length: 3, // Added
+      initialIndex: 0, //Added
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: TabBar(tabs: [
+            Tab(text: "Available Catalog"),
+            Tab(text: "Favorite Stores"),
+            Tab(text: "Recent Helpers"),
+          ]),
+          title: Text(
+            "TestShopper",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          centerTitle: true,
+          backgroundColor: Colors.red[700],
         ),
-        centerTitle: true,
-        backgroundColor: Colors.red[700],
+        body: TabBarView(
+          children: [
+            RecentHelperScroll(),
+            RecentHelperScroll(),
+            RecentHelperScroll(),
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //user input
-          setState(() {
-            Product newp = new Product("whatever the user inputs", 30.0);
-            productList.add(newp);
-          });
-        },
-        child: Text("add product"),
-      ),
-      body: Text("$productList"),
     );
   }
 }
-
 class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -447,15 +449,5 @@ class SignUp extends StatelessWidget {
             ]),
       ),
     );
-  }
-}
-
-class Product {
-  String name;
-  double price;
-
-  Product(String name, double price) {
-    this.name = name;
-    this.price = price;
   }
 }
