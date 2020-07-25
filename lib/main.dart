@@ -74,7 +74,6 @@ class SignIn extends StatelessWidget {
     );
   }
 }
-
 class SignedInShopper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -101,7 +100,7 @@ class SignedInShopper extends StatelessWidget {
         body: TabBarView(
           children: [
             RecentHelperScroll(),
-            RecentHelperScroll(),
+            FavoriteStoresScroll(),
             RecentHelperScroll(),
           ],
         ),
@@ -138,7 +137,6 @@ class RecentHelperScroll extends StatelessWidget {
     ]);
   }
 }
-
 class UserRow extends StatelessWidget {
   final User user;
 
@@ -288,6 +286,160 @@ List<User> user = [
     address: "Hogwarts",
     image: AssetImage("img/mars.png"),
     numListsFilled: "62442",
+  ),
+];
+
+
+class FavoriteStoresScroll extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Flex(direction: Axis.horizontal, children: [
+      Expanded(
+        flex: 1,
+        child: new Container(
+          color: new Color(0xFFFFFFFF),
+          child: new CustomScrollView(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: false,
+            slivers: <Widget>[
+              new SliverPadding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                sliver: new SliverList(
+                  delegate: new SliverChildBuilderDelegate(
+                        (context, index) => new StoreRow(stores[index]),
+                    childCount: stores.length,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+    ]);
+  }
+}
+class StoreRow extends StatelessWidget {
+  final Store store;
+
+  StoreRow(this.store);
+
+  @override
+  Widget build(BuildContext context) {
+    final userThumbnail = new Container(
+      margin: new EdgeInsets.symmetric(vertical: 16.0),
+      alignment: FractionalOffset.centerLeft,
+      child: new Image(
+        image: new AssetImage("img/mars.png"),
+        height: 92.0,
+        width: 92.0,
+      ),
+    );
+
+    final baseTextStyle = const TextStyle(fontFamily: 'Poppins');
+    final regularTextStyle = baseTextStyle.copyWith(
+        color: const Color(0xffffffff),
+        fontSize: 9.0,
+        fontWeight: FontWeight.w400);
+    final subHeaderTextStyle = regularTextStyle.copyWith(fontSize: 12.0);
+    final headerTextStyle = baseTextStyle.copyWith(
+        color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600);
+
+    Widget _storeValue({String value, String image}) {
+      return new Row(children: <Widget>[
+        new Image.asset(image, height: 12.0),
+        new Container(width: 8.0),
+        new Text(
+          "Distance: " + store.distance,
+          style: regularTextStyle,
+          textScaleFactor: 1.3,
+        ),
+      ]);
+    }
+
+    final userCardContent = new Container(
+      margin: new EdgeInsets.fromLTRB(76.0, 16.0, 16.0, 16.0),
+      constraints: new BoxConstraints.expand(),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Container(height: 4.0),
+          new Text(store.name, style: headerTextStyle),
+          new Container(height: 10.0),
+          new Text(store.location, style: subHeaderTextStyle),
+          new Container(
+              margin: new EdgeInsets.symmetric(vertical: 8.0),
+              height: 2.0,
+              width: 18.0,
+              color: new Color(0xffffffff)),
+          new Row(
+            children: <Widget>[
+              new Expanded(
+                  child: _storeValue(
+                      value: store.distance,
+                      image: 'img/ic_distance.png'
+                  )
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+
+    final userCard = new Container(
+      child: userCardContent,
+      height: 124.0,
+      margin: new EdgeInsets.only(left: 46.0),
+      decoration: new BoxDecoration(
+        color: new Color(0xffd32f2f),
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+      ),
+    );
+
+    return new Container(
+        height: 120.0,
+        margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 24.0,
+        ),
+        child: new Stack(
+          children: <Widget>[
+            userCard,
+            userThumbnail,
+          ],
+        ));
+  }
+}
+
+class Store {
+  final String name;
+  final String location;
+  final String distance;
+
+
+  const Store({this.name, this.location, this.distance});
+}
+
+List<Store> stores = [
+  const Store(
+    name: "Safeway",
+    location: "20620 W Homestead Rd, Cupertino, CA 95014",
+    distance: "1.1 mile",
+  ),
+  const Store(
+    name: "Costco",
+    location: "150 LAWRENCE STATION RD SUNNYVALE, CA 94086-5309",
+    distance: "1.3 miles",
+  ),
+  const Store(
+    name: "Target",
+    location: "20745 Stevens Creek Blvd, Cupertino, CA 95014",
+    distance: "2.6 miles",
+  ),
+  const Store(
+    name: "Walmart",
+    location: "3255 Mission College Blvd",
+    distance: "1.7 miles",
   ),
 ];
 
