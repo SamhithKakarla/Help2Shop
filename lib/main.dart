@@ -79,7 +79,7 @@ class SignedInShopper extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       // Added
-      length: 3, // Added
+      length: 4, // Added
       initialIndex: 0, //Added
       child: Scaffold(
         appBar: AppBar(
@@ -87,6 +87,7 @@ class SignedInShopper extends StatelessWidget {
             Tab(text: "My Lists"),
             Tab(text: "Favorite Stores"),
             Tab(text: "Recent Helpers"),
+            Tab(text: "Public Lists for Stores Near You"),
           ]),
           title: Text(
             "TestShopper",
@@ -99,9 +100,10 @@ class SignedInShopper extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            RecentHelperScroll(),
+            UserListScroll(),
             FavoriteStoresScroll(),
             RecentHelperScroll(),
+            PublicListScroll(),
           ],
         ),
       ),
@@ -410,7 +412,6 @@ class StoreRow extends StatelessWidget {
         ));
   }
 }
-
 class Store {
   final String name;
   final String location;
@@ -447,11 +448,214 @@ List<Store> stores = [
   ),
 ];
 
+
+
+class UserListScroll extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Flex(direction: Axis.horizontal, children: [
+      Expanded(
+        flex: 1,
+        child: new Container(
+          color: new Color(0xFFFFFFFF),
+          child: new CustomScrollView(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: false,
+            slivers: <Widget>[
+              new SliverPadding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                sliver: new SliverList(
+                  delegate: new SliverChildBuilderDelegate(
+                        (context, index) => new ShoppingListRow(userLists[index]),
+                    childCount: stores.length,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+    ]);
+  }
+}
+class PublicListScroll extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Flex(direction: Axis.horizontal, children: [
+      Expanded(
+        flex: 1,
+        child: new Container(
+          color: new Color(0xFFFFFFFF),
+          child: new CustomScrollView(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: false,
+            slivers: <Widget>[
+              new SliverPadding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                sliver: new SliverList(
+                  delegate: new SliverChildBuilderDelegate(
+                        (context, index) => new ShoppingListRow(publicLists[index]),
+                    childCount: stores.length,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+    ]);
+  }
+}
+class ShoppingListRow extends StatelessWidget {
+  final ShoppingList shoppingList;
+
+  ShoppingListRow(this.shoppingList);
+
+  @override
+  Widget build(BuildContext context) {
+    final userThumbnail = new Container(
+      margin: new EdgeInsets.symmetric(vertical: 16.0),
+      alignment: FractionalOffset.centerLeft,
+      child: new Image(
+        image: new AssetImage('img/moon.png'),
+        height: 92.0,
+        width: 92.0,
+      ),
+    );
+
+    final baseTextStyle = const TextStyle(fontFamily: 'Poppins');
+    final regularTextStyle = baseTextStyle.copyWith(
+        color: const Color(0xffffffff),
+        fontSize: 9.0,
+        fontWeight: FontWeight.w400);
+    final subHeaderTextStyle = regularTextStyle.copyWith(fontSize: 12.0);
+    final headerTextStyle = baseTextStyle.copyWith(
+        color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600);
+
+    Widget _storeValue({String value, String image}) {
+      return new Row(children: <Widget>[
+        new Image.asset(image, height: 12.0),
+        new Container(width: 8.0),
+        new Text(
+          "Estimated Cost: " + shoppingList.estimatedCost,
+          style: regularTextStyle,
+          textScaleFactor: 1.3,
+        ),
+      ]);
+    }
+
+    final userCardContent = new Container(
+      margin: new EdgeInsets.fromLTRB(76.0, 16.0, 16.0, 16.0),
+      constraints: new BoxConstraints.expand(),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Container(height: 4.0),
+          new Text(shoppingList.name, style: headerTextStyle),
+          new Container(height: 10.0),
+          new Text(shoppingList.listStatus, style: subHeaderTextStyle),
+          new Container(
+              margin: new EdgeInsets.symmetric(vertical: 8.0),
+              height: 2.0,
+              width: 18.0,
+              color: new Color(0xffffffff)),
+          new Row(
+            children: <Widget>[
+              new Expanded(
+                  child: _storeValue(
+                      value: shoppingList.estimatedCost,
+                      image: 'img/ic_distance.png'
+                  )
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+
+    final userCard = new Container(
+      child: userCardContent,
+      height: 124.0,
+      margin: new EdgeInsets.only(left: 46.0),
+      decoration: new BoxDecoration(
+        color: new Color(0xffd32f2f),
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+      ),
+    );
+
+    return new Container(
+        height: 120.0,
+        margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 24.0,
+        ),
+        child: new Stack(
+          children: <Widget>[
+            userCard,
+            userThumbnail,
+          ],
+        ));
+  }
+}
+class ShoppingList {
+  final String name;
+  final String numberOfItems;
+  final String listStatus;
+  final String estimatedCost;
+
+
+  const ShoppingList({this.name, this.numberOfItems, this.listStatus, this.estimatedCost});
+}
+
+List<ShoppingList> userLists = [
+  const ShoppingList(
+    name: "Safeway Groceries",
+    numberOfItems: "17",
+    listStatus: "Accepted; In Progress",
+    estimatedCost: '\$45',
+  ),
+  const ShoppingList(
+    name: "Costco Fruits",
+    numberOfItems: "4",
+    listStatus: "Completed",
+    estimatedCost: '\$15',
+  ),
+  const ShoppingList(
+    name: "Walmart Vegetables",
+    numberOfItems: "6",
+    listStatus: "Pending Acceptance",
+    estimatedCost: '\$23',
+
+  ),
+];
+
+List<ShoppingList> publicLists = [
+  const ShoppingList(
+    name: "Safeway Vegetables",
+    numberOfItems: "17",
+    listStatus: "Pending Acceptance",
+    estimatedCost: '\$45',
+  ),
+  const ShoppingList(
+    name: "Costco Fruits",
+    numberOfItems: "4",
+    listStatus: "Pending Acceptance",
+    estimatedCost: '\$15',
+  ),
+  const ShoppingList(
+    name: "Walmart Vegetables",
+    numberOfItems: "6",
+    listStatus: "Pending Acceptance",
+    estimatedCost: '\$23',
+
+  ),
+];
+
 class SignedInStore extends StatefulWidget {
   @override
   SignedInStoreState createState() => SignedInStoreState();
 }
-
 class SignedInStoreState extends State<SignedInStore> {
   @override
   Widget build(BuildContext context) {
