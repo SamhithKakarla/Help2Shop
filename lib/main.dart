@@ -74,6 +74,7 @@ class SignIn extends StatelessWidget {
     );
   }
 }
+
 class SignedInShopper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,7 @@ class SignedInShopper extends StatelessWidget {
         appBar: AppBar(
           bottom: TabBar(tabs: [
             Tab(text: "My Lists"),
-            Tab(text: "Favorite Stores"),
+            Tab(text: "Stores Near Me"),
             Tab(text: "Recent Helpers"),
             Tab(text: "Public Lists for Stores Near You"),
           ]),
@@ -139,6 +140,7 @@ class RecentHelperScroll extends StatelessWidget {
     ]);
   }
 }
+
 class UserRow extends StatelessWidget {
   final User user;
 
@@ -197,9 +199,7 @@ class UserRow extends StatelessWidget {
               new Expanded(
                   child: _userValue(
                       value: user.numListsFilled,
-                      image: 'img/ic_distance.png'
-                  )
-              ),
+                      image: 'img/ic_distance.png')),
             ],
           ),
         ],
@@ -231,6 +231,7 @@ class UserRow extends StatelessWidget {
         ));
   }
 }
+
 class User {
   final String name;
   final String address;
@@ -291,7 +292,6 @@ List<User> user = [
   ),
 ];
 
-
 class FavoriteStoresScroll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -308,7 +308,7 @@ class FavoriteStoresScroll extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 24.0),
                 sliver: new SliverList(
                   delegate: new SliverChildBuilderDelegate(
-                        (context, index) => new StoreRow(stores[index]),
+                    (context, index) => new StoreRow(stores[index]),
                     childCount: stores.length,
                   ),
                 ),
@@ -320,6 +320,7 @@ class FavoriteStoresScroll extends StatelessWidget {
     ]);
   }
 }
+
 class StoreRow extends StatelessWidget {
   final Store store;
 
@@ -377,10 +378,7 @@ class StoreRow extends StatelessWidget {
             children: <Widget>[
               new Expanded(
                   child: _storeValue(
-                      value: store.distance,
-                      image: 'img/ic_distance.png'
-                  )
-              ),
+                      value: store.distance, image: 'img/ic_distance.png')),
             ],
           ),
         ],
@@ -412,30 +410,27 @@ class StoreRow extends StatelessWidget {
         ));
   }
 }
+
 class Store {
   final String name;
   final String location;
   final String distance;
   final AssetImage image;
 
-
   const Store({this.name, this.location, this.distance, this.image});
 }
 
 List<Store> stores = [
   const Store(
-    name: "Safeway",
-    location: "20620 W Homestead Rd, Cupertino, CA 95014",
-    distance: "1.1 mile",
-      image: AssetImage('img/safeway.png')
-
-  ),
+      name: "Safeway",
+      location: "20620 W Homestead Rd, Cupertino, CA 95014",
+      distance: "1.1 mile",
+      image: AssetImage('img/safeway.png')),
   const Store(
-    name: "Costco",
-    location: "150 LAWRENCE STATION RD SUNNYVALE, CA 94086-5309",
-    distance: "1.3 miles",
-    image: AssetImage('img/costco.png')
-  ),
+      name: "Costco",
+      location: "150 LAWRENCE STATION RD SUNNYVALE, CA 94086-5309",
+      distance: "1.3 miles",
+      image: AssetImage('img/costco.png')),
   const Store(
     name: "Target",
     location: "20745 Stevens Creek Blvd, Cupertino, CA 95014",
@@ -448,34 +443,37 @@ List<Store> stores = [
   ),
 ];
 
-
-
 class UserListScroll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Flex(direction: Axis.horizontal, children: [
-      Expanded(
-        flex: 1,
-        child: new Container(
-          color: new Color(0xFFFFFFFF),
-          child: new CustomScrollView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: false,
-            slivers: <Widget>[
-              new SliverPadding(
-                padding: const EdgeInsets.symmetric(vertical: 24.0),
-                sliver: new SliverList(
-                  delegate: new SliverChildBuilderDelegate(
-                        (context, index) => new ShoppingListRow(userLists[index]),
-                    childCount: stores.length,
+    return new Flex(
+      direction: Axis.horizontal,
+      children: [
+        Expanded(
+          flex: 1,
+          child: new Container(
+            color: new Color(0xFFFFFFFF),
+            child: new CustomScrollView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: false,
+              slivers: <Widget>[
+                new SliverPadding(
+                  padding: const EdgeInsets.symmetric(vertical: 24.0),
+                  sliver: new SliverList(
+                    delegate: new SliverChildBuilderDelegate(
+                      (context, index) => new ShoppingListRow(userLists[index]),
+                      childCount: userLists.length,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
+
           ),
-        ),
-      )
-    ]);
+
+        )
+      ],
+    );
   }
 }
 class PublicListScroll extends StatelessWidget {
@@ -494,8 +492,8 @@ class PublicListScroll extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 24.0),
                 sliver: new SliverList(
                   delegate: new SliverChildBuilderDelegate(
-                        (context, index) => new ShoppingListRow(publicLists[index]),
-                    childCount: stores.length,
+                    (context, index) => new ShoppingListRow(publicLists[index]),
+                    childCount: publicLists.length,
                   ),
                 ),
               ),
@@ -564,9 +562,7 @@ class ShoppingListRow extends StatelessWidget {
               new Expanded(
                   child: _storeValue(
                       value: shoppingList.estimatedCost,
-                      image: 'img/ic_distance.png'
-                  )
-              ),
+                      image: 'img/ic_distance.png')),
             ],
           ),
         ],
@@ -598,17 +594,25 @@ class ShoppingListRow extends StatelessWidget {
         ));
   }
 }
+
 class ShoppingList {
   final String name;
   final String numberOfItems;
   final String listStatus;
   final String estimatedCost;
 
-
-  const ShoppingList({this.name, this.numberOfItems, this.listStatus, this.estimatedCost});
+  const ShoppingList(
+      {this.name, this.numberOfItems, this.listStatus, this.estimatedCost});
 }
 
 List<ShoppingList> userLists = [
+  const ShoppingList(
+    name: "+ CREATE NEW LIST",
+    numberOfItems: "",
+    listStatus: "Click to Create New List",
+    estimatedCost: '',
+  ),
+
   const ShoppingList(
     name: "Safeway Groceries",
     numberOfItems: "17",
@@ -626,7 +630,6 @@ List<ShoppingList> userLists = [
     numberOfItems: "6",
     listStatus: "Pending Acceptance",
     estimatedCost: '\$23',
-
   ),
 ];
 
@@ -648,26 +651,168 @@ List<ShoppingList> publicLists = [
     numberOfItems: "6",
     listStatus: "Pending Acceptance",
     estimatedCost: '\$23',
-
   ),
 ];
+
 
 class SignedInStore extends StatefulWidget {
   @override
   SignedInStoreState createState() => SignedInStoreState();
 }
+
+
+class CatalogScroll extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Flex(direction: Axis.horizontal, children: [
+      Expanded(
+        flex: 1,
+        child: new Container(
+          color: new Color(0xFFFFFFFF),
+          child: new CustomScrollView(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: false,
+            slivers: <Widget>[
+              new SliverPadding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                sliver: new SliverList(
+                  delegate: new SliverChildBuilderDelegate(
+                        (context, index) => new CatalogRow(catalog[index]),
+                    childCount: catalog.length,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+    ]);
+  }
+}
+class CatalogRow extends StatelessWidget {
+  final Product product;
+
+  CatalogRow(this.product);
+
+  @override
+  Widget build(BuildContext context) {
+    final userThumbnail = new Container(
+      margin: new EdgeInsets.symmetric(vertical: 16.0),
+      alignment: FractionalOffset.centerLeft,
+      child: new Image(
+        image: new AssetImage('img/moon.png'),
+        height: 92.0,
+        width: 92.0,
+      ),
+    );
+
+    final baseTextStyle = const TextStyle(fontFamily: 'Poppins');
+    final regularTextStyle = baseTextStyle.copyWith(
+        color: const Color(0xffffffff),
+        fontSize: 9.0,
+        fontWeight: FontWeight.w400);
+    final subHeaderTextStyle = regularTextStyle.copyWith(fontSize: 12.0);
+    final headerTextStyle = baseTextStyle.copyWith(
+        color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600);
+
+    Widget _storeValue({String value, String image}) {
+      return new Row(children: <Widget>[
+        new Image.asset(image, height: 12.0),
+        new Container(width: 8.0),
+        new Text(
+          "Cost: " + product.cost,
+          style: regularTextStyle,
+          textScaleFactor: 1.3,
+        ),
+      ]);
+    }
+
+    final userCardContent = new Container(
+      margin: new EdgeInsets.fromLTRB(76.0, 16.0, 16.0, 16.0),
+      constraints: new BoxConstraints.expand(),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Container(height: 4.0),
+          new Text(product.name, style: headerTextStyle),
+          new Container(height: 10.0),
+          new Text(
+              "Item Number: " + product.numleft,
+              style: subHeaderTextStyle),
+          new Container(
+              margin: new EdgeInsets.symmetric(vertical: 8.0),
+              height: 2.0,
+              width: 18.0,
+              color: new Color(0xffffffff)),
+          new Row(
+            children: <Widget>[
+              new Expanded(
+                  child: _storeValue(
+                      value: product.cost,
+                      image: 'img/ic_distance.png')),
+            ],
+          ),
+        ],
+      ),
+    );
+
+    final userCard = new Container(
+      child: userCardContent,
+      height: 124.0,
+      margin: new EdgeInsets.only(left: 46.0),
+      decoration: new BoxDecoration(
+        color: new Color(0xffd32f2f),
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+      ),
+    );
+
+    return new Container(
+        height: 120.0,
+        margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 24.0,
+        ),
+        child: new Stack(
+          children: <Widget>[
+            userCard,
+            userThumbnail,
+          ],
+        ));
+  }
+}
+class Product {
+  final String name;
+  final String numleft;
+  final String cost;
+
+  const Product({this.name, this.numleft, this.cost});
+}
+
+List<Product> catalog = [
+  const Product(name: "+ ADD NEW PRODUCT", numleft: 'Click to Add Item To Catalog', cost: ''),
+  const Product(name: "Apples", numleft: '314212', cost: '\$4.99'),
+  const Product(name: "Bananas", numleft: '424127', cost: '\$3.99'),
+  const Product(name: "Lays Classic", numleft: '124115', cost: '\$3.49'),
+  const Product(name: "Ragu Salsa (Medium)", numleft: '244211', cost: '\$4.49'),
+  const Product(name: "Hershey's Bar (Milk Chocolate)", numleft: '142127', cost: '\$1.49'),
+
+];
+
+
+
+
 class SignedInStoreState extends State<SignedInStore> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       // Added
-      length: 2, // Added
+      length: 1, // Added
       initialIndex: 0, //Added
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(tabs: [
             Tab(text: "Available Catalog"),
-            Tab(text: "Shopping Information"),
           ]),
           title: Text(
             "Safeway",
@@ -680,8 +825,7 @@ class SignedInStoreState extends State<SignedInStore> {
         ),
         body: TabBarView(
           children: [
-            RecentHelperScroll(),
-            RecentHelperScroll(),
+            CatalogScroll(),
           ],
         ),
       ),
@@ -761,23 +905,22 @@ class _State extends State<Home> {
                     )),
                 Container(
                     child: Row(
-                      children: <Widget>[
-                        Text('Do not have an account?'),
-                        FlatButton(
-                          textColor: Colors.blue,
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          onPressed: () {
-                            //signup screen
-                          },
-                        )
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.center,
-                    ))
+                  children: <Widget>[
+                    Text('Do not have an account?'),
+                    FlatButton(
+                      textColor: Colors.blue,
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      onPressed: () {
+                        //signup screen
+                      },
+                    )
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                ))
               ],
             )));
   }
 }
-
