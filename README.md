@@ -1,16 +1,2 @@
-# flutter_app
-
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Help2Shop
+Help2Shop is a moblie flutter application aimed at helping the elderly and other vulnerable people during the Covid-19 pandemic. The app allows people who do not want to risk contracting Covid-19 to shop for things such as groceries in the comfort of their homes. The app allows users to post their shopping lists to the public allowing other users that might be visiting those same stores to be able to shop for those at home and deliver their items to them at a desired location. The app also allows stores and companies to post their product lists with product numbers and costs for people to see in order to create their own shopping lists. This app is different to services such as amazon fresh as the app is run on a volunteer basis with fellow shopers choosing to help out their community while also picking up their own groceries. 
